@@ -5,19 +5,19 @@
   
 
   
-  <title>React Study | Sean</title>
+  <title>语音识别CTC | Sean</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一天 React的特点  组件化模式，声明式编码 使用虚拟DOM＋Diffing算法，减少与真实DOM的交互   React 文件  babel.min.js: JSX转JS react.development.js: 核心库 react-dom.development.js: 操作DOM   JSX  标签中混入JS表达式时需要用{} 样式的类名指定不要用class，要用className 内">
+  <meta name="description" content="传统GMM-HMM 传统的GMM-HMM模型里，首先需要对帧和标签进行对齐。也就是需要知道哪几帧是什么音素.传统模型里是通过GMM(混合高斯模型)的EM算法来实现的.是一个非常耗费时间，需要反复迭代的过程 EM算法第一步先求出要估计参数的粗略值，第二步使用第一步的值最大化似然函数  CTC模型 CTC是一种损失函数，用于衡量输入的序列数据经过神经网络之后，和真实的输出相差有多少">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React Study">
-<meta property="og:url" content="http://example.com/2021/11/24/React-Study/index.html">
+<meta property="og:title" content="语音识别CTC">
+<meta property="og:url" content="http://example.com/2021/12/12/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABCTC/index.html">
 <meta property="og:site_name" content="Sean">
-<meta property="og:description" content="第一天 React的特点  组件化模式，声明式编码 使用虚拟DOM＋Diffing算法，减少与真实DOM的交互   React 文件  babel.min.js: JSX转JS react.development.js: 核心库 react-dom.development.js: 操作DOM   JSX  标签中混入JS表达式时需要用{} 样式的类名指定不要用class，要用className 内">
+<meta property="og:description" content="传统GMM-HMM 传统的GMM-HMM模型里，首先需要对帧和标签进行对齐。也就是需要知道哪几帧是什么音素.传统模型里是通过GMM(混合高斯模型)的EM算法来实现的.是一个非常耗费时间，需要反复迭代的过程 EM算法第一步先求出要估计参数的粗略值，第二步使用第一步的值最大化似然函数  CTC模型 CTC是一种损失函数，用于衡量输入的序列数据经过神经网络之后，和真实的输出相差有多少">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-11-24T13:11:10.000Z">
-<meta property="article:modified_time" content="2021-12-01T14:03:30.281Z">
+<meta property="article:published_time" content="2021-12-12T13:12:24.000Z">
+<meta property="article:modified_time" content="2021-12-12T13:54:56.719Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="React">
+<meta property="article:tag" content="ASR">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Sean" type="application/atom+xml">
@@ -67,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-React-Study" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-语音识别CTC" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/11/24/React-Study/" class="article-date">
-  <time datetime="2021-11-24T13:11:10.000Z" itemprop="datePublished">2021-11-24</time>
+    <a href="/2021/12/12/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABCTC/" class="article-date">
+  <time datetime="2021-12-12T13:12:24.000Z" itemprop="datePublished">2021-12-12</time>
 </a>
     
   </div>
@@ -81,7 +81,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      React Study
+      语音识别CTC
     </h1>
   
 
@@ -89,79 +89,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h2><ol>
-<li><p>React的特点</p>
-<ul>
-<li>组件化模式，声明式编码</li>
-<li>使用虚拟DOM＋Diffing算法，减少与真实DOM的交互</li>
-</ul>
-</li>
-<li><p>React 文件</p>
-<ul>
-<li>babel.min.js: JSX转JS</li>
-<li>react.development.js: 核心库</li>
-<li>react-dom.development.js: 操作DOM</li>
-</ul>
-</li>
-<li><p>JSX</p>
-<ul>
-<li>标签中混入JS表达式时需要用{}</li>
-<li>样式的类名指定不要用class，要用className</li>
-<li>内联样式要用style= {对象}的形式</li>
-<li>只有一个根标签</li>
-<li>标签必须闭合</li>
-<li>组件名称的首字母要大写，如果首字母会小写会自动去匹配html的原生元素</li>
-</ul>
-</li>
-<li><p>state</p>
-<ul>
-<li>state不可以直接更改，要借助setState来更改</li>
-<li>自定义方法要用赋值语句的形式： changeWeather = () =&gt; {}</li>
-</ul>
-</li>
-<li><p>props</p>
-<ul>
-<li>批量传递props: &lt;Person {…p}&gt; //p是一个对象</li>
-<li>对props进行限制 Person.propTypes = 对象, </li>
-<li>对props设置默认值 Person.defaultProps=对象</li>
-<li>props 是只读的</li>
-<li>函数式组件使用props：用参数来进行传递</li>
-</ul>
-</li>
-<li><p>ref</p>
-<ul>
-<li>字符串ref(不推荐，之后会被移除)，通过this.refs来获得<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input ref = &#x27;input1&#x27; /&gt;</span><br><span class="line">this.refs</span><br></pre></td></tr></table></figure></li>
-<li>回调ref<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input ref=&#123;c =&gt; this.input1 = c&#125; /&gt;</span><br><span class="line">//this是实例自身, c是当前的节点</span><br></pre></td></tr></table></figure>
-<ul>
-<li>为了清空旧的ref，在更新的时候会调用ref两次，第一次传入null</li>
-</ul>
-</li>
-<li>crate ref: 相当于一个容器，专人专用，只能存一个<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">myRef = React.creatRef</span><br><span class="line">&lt;input ref = &#123;this.myRef&#125; /&gt;</span><br><span class="line">this.myRef.current;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>受控组件和非受控组件</p>
-<ul>
-<li>非受控组件：数据随用随取，一般用ref</li>
-<li>受控组件：提前存储数据，一般用state</li>
-</ul>
-</li>
-<li><p>高阶函数</p>
-<ul>
-<li>函数接收的参数是一个函数</li>
-<li>函数的返回值还是一个函数(通过函数调用继续返回函数，实现多次接收参数<br>最后统一处理的方式叫做函数的柯里化)</li>
-</ul>
-</li>
-<li><p>脚手架</p>
-</li>
+        <h1 id="传统GMM-HMM"><a href="#传统GMM-HMM" class="headerlink" title="传统GMM-HMM"></a>传统GMM-HMM</h1><ol>
+<li>传统的GMM-HMM模型里，首先需要对帧和标签进行对齐。也就是需要知道哪几帧是什么音素.<br>传统模型里是通过GMM(混合高斯模型)的EM算法来实现的.<br>是一个非常耗费时间，需要反复迭代的过程</li>
+<li>EM算法第一步先求出要估计参数的粗略值，第二步使用第一步的值最大化似然函数</li>
+</ol>
+<h1 id="CTC模型"><a href="#CTC模型" class="headerlink" title="CTC模型"></a>CTC模型</h1><ol>
+<li>CTC是一种损失函数，用于衡量输入的序列数据经过神经网络之后，和真实的输出相差有多少</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/24/React-Study/" data-id="ckw8ng4j20000hcvc3gzd04b6" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/12/12/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABCTC/" data-id="ckx3b5bdl0000f4vcevu8aawf" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ASR/" rel="tag">ASR</a></li></ul>
 
     </footer>
   </div>
@@ -169,19 +111,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/11/24/React-Study-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          React Study
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/11/17/%E4%BD%8D%E8%BF%90%E7%AE%97/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/11/24/React-Study-1/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">位运算</div>
+      <div class="article-nav-title">React Study</div>
     </a>
   
 </nav>
