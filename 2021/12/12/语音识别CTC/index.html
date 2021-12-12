@@ -15,7 +15,7 @@
 <meta property="og:description" content="传统GMM-HMM 传统的GMM-HMM模型里，首先需要对帧和标签进行对齐。也就是需要知道哪几帧是什么音素.传统模型里是通过GMM(混合高斯模型)的EM算法来实现的.是一个非常耗费时间，需要反复迭代的过程 EM算法第一步先求出要估计参数的粗略值，第二步使用第一步的值最大化似然函数  CTC模型 CTC是一种损失函数，用于衡量输入的序列数据经过神经网络之后，和真实的输出相差有多少 https:&#x2F;&#x2F;b">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-12-12T13:12:24.000Z">
-<meta property="article:modified_time" content="2021-12-12T14:31:51.744Z">
+<meta property="article:modified_time" content="2021-12-12T14:39:21.067Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="ASR">
 <meta name="twitter:card" content="summary">
@@ -96,6 +96,9 @@
 <h1 id="CTC模型"><a href="#CTC模型" class="headerlink" title="CTC模型"></a>CTC模型</h1><ol>
 <li>CTC是一种损失函数，用于衡量输入的序列数据经过神经网络之后，和真实的输出相差有多少</li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/luodongri/article/details/80100297">https://blog.csdn.net/luodongri/article/details/80100297</a></li>
+<li>在输出序列和最终标签之间增加了多对一的映射，并定义了CTC Loss函数。</li>
+<li>借鉴了HMM的向前向后算法的思路，利用动态规划算法来进行计算</li>
+<li><a target="_blank" rel="noopener" href="https://xiaodu.io/ctc-explained/">https://xiaodu.io/ctc-explained/</a></li>
 </ol>
 
       
